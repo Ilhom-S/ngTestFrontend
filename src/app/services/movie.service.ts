@@ -7,7 +7,7 @@ import { Movie } from '../Movie';
 })
 export class MovieService {
   constructor(private http: Jsonp) {}
-  private imdbUrl = 'http://www.omdbapi.com';
+  private url = 'https://www.omdbapi.com';
   private apiKey = '5751fd6b';
   public totalRows: number;
   // Search movies from imdb
@@ -18,7 +18,7 @@ export class MovieService {
   ): Observable<Movie[]> {
     return this.http
       .get(
-        this.imdbUrl +
+        this.url +
           '/?apikey=' +
           this.apiKey +
           '&callback=JSONP_CALLBACK&s=' +
@@ -35,7 +35,7 @@ export class MovieService {
 
   getMovie(id: string): Observable<Movie> {
     return this.http
-      .get(this.imdbUrl + '/?apikey=' + this.apiKey + '&callback=JSONP_CALLBACK&i=' + id)
+      .get(this.url + '/?apikey=' + this.apiKey + '&callback=JSONP_CALLBACK&i=' + id)
       .map(response => response.json() as Movie);
   }
   private extractData(res: Response) {
