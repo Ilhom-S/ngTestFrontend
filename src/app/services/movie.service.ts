@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import '../rxjs-operators';
 import { Http, Response } from '@angular/http';
-import { MovieListResult, Movie } from '../Movie';
+import { Movie } from '../Movie';
 @Injectable({
   providedIn: 'root'
 })
@@ -34,6 +33,13 @@ export class MovieService {
     return this.totalRows;
   }
 
+  getMovie(id: string): Promise<Movie> {
+    return this.http
+      .get(this.imdbUrl + '/?apikey=' + this.apiKey + '&i=' + id)
+      .toPromise()
+      .then((res: Response) => res.json() as Movie)
+      .catch(this.handleError);
+  }
   private extractData(res: Response) {
     const body = res.json();
     const searchData = body['Search'];

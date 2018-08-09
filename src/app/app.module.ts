@@ -8,16 +8,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MovieService } from './services/movie.service';
 import { AppRouters } from './app.routes';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, WelcomeComponent],
+  declarations: [AppComponent, WelcomeComponent, MovieDetailComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
     AppRouters,
-    HttpModule
+    HttpModule,
+    JsonpModule,
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

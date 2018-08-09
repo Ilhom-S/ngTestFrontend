@@ -36,7 +36,7 @@
                 <ng-container matColumnDef="Poster">
                   <mat-header-cell *matHeaderCellDef mat-sort-header> Poster </mat-header-cell>
                   <mat-cell *matCellDef="let element">
-                      <img *ngIf="element.Poster && element.Poster != 'N/A'" [src]="element.Poster" style="height: 150px;" />
+                    <img *ngIf="element.Poster && element.Poster != 'N/A'" [src]="element.Poster" style="height: 150px;" />
                   </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="delete">
@@ -48,7 +48,9 @@
                   </mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
+                <mat-row   routerLink="/movie/{{row.imdbID}}" *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)">
+
+                </mat-row>
               </mat-table>
               <mat-paginator [length]="dataSource?.totalMovies" [pageSize]="10" [pageSizeOptions]="[10]"></mat-paginator>
             </div>

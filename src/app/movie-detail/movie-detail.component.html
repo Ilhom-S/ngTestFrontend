@@ -1,0 +1,50 @@
+<div>
+  <br>
+  <div class="container">
+
+    <div fxLayout="row" fxLayoutAlign="center center" class="content">
+      <mat-card *ngIf="model" class="example-card">
+        <img mat-card-image *ngIf="model.Poster && model.Poster != 'N/A'" [src]="model.Poster">
+        <mat-card-header>
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center">
+            <h3>{{model.Title}}</h3>
+          </mat-card-title>
+
+          <mat-card-subtitle>{{model.Type}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>
+            {{model.Plot}}
+          </p>
+          <p>
+            <mat-label>Year:
+            </mat-label>
+          </p>
+          <p><label>Langugage: {{model.Language}} </label></p>
+          <p><label>Actors: {{model.Actors}} </label></p>
+          <p><label>Awards: {{model.Awards}} </label></p>
+          <p><label>Country: {{model.Country}} </label></p>
+          <p><label>Director: {{model.Director}} </label></p>
+          <p><label>Genre: {{model.Genre}} </label></p>
+          <p><label>imdbRating: {{model.imdbRating}} </label></p>
+          <p><label>imdbVotes: {{model.imdbVotes}} </label></p>
+          <p><label>Metascore: {{model.Metascore}} </label></p>
+          <p><label>Rated: {{model.Rated}} </label></p>
+          <p><label>Released: {{model.Released}} </label></p>
+          <p><label>Response: {{model.Response}} </label></p>
+          <p><label>Runtime: {{model.Runtime}} </label></p>
+          <p><label>Writer: {{model.Writer}} </label></p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>BACK</button>
+          <button mat-button>LIKE</button>
+        </mat-card-actions>
+        <mat-card-footer>
+
+        </mat-card-footer>
+      </mat-card>
+    </div>
+
+  </div>
+</div>
