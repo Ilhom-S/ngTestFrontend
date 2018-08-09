@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { JsonpModule, Jsonp, Response } from '@angular/http';
 import { Movie } from '../Movie';
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  constructor(private http: Http) {}
+  constructor(private http: Jsonp) {}
   private imdbUrl = 'http://www.omdbapi.com';
   private apiKey = '5751fd6b';
   public totalRows: number;
@@ -21,7 +21,7 @@ export class MovieService {
         this.imdbUrl +
           '/?apikey=' +
           this.apiKey +
-          '&s=' +
+          '&callback=JSONP_CALLBACK&s=' +
           filter +
           '&page=' +
           pageNumber++
@@ -35,7 +35,7 @@ export class MovieService {
 
   getMovie(id: string): Observable<Movie> {
     return this.http
-      .get(this.imdbUrl + '/?apikey=' + this.apiKey + '&i=' + id)
+      .get(this.imdbUrl + '/?apikey=' + this.apiKey + '&callback=JSONP_CALLBACK&i=' + id)
       .map(response => response.json() as Movie);
   }
   private extractData(res: Response) {
