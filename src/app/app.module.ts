@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { JsonpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MovieService } from './services/movie.service';
@@ -18,7 +18,6 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     MaterialModule,
     FlexLayoutModule,
     AppRouters,
-    HttpModule,
     JsonpModule,
   ],
   providers: [MovieService],
