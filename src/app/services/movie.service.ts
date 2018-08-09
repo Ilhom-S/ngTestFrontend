@@ -33,12 +33,10 @@ export class MovieService {
     return this.totalRows;
   }
 
-  getMovie(id: string): Promise<Movie> {
+  getMovie(id: string): Observable<Movie> {
     return this.http
       .get(this.imdbUrl + '/?apikey=' + this.apiKey + '&i=' + id)
-      .toPromise()
-      .then((res: Response) => res.json() as Movie)
-      .catch(this.handleError);
+      .map(response => response.json() as Movie);
   }
   private extractData(res: Response) {
     const body = res.json();

@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Movie } from '../Movie';
 import { MovieService } from '../services/movie.service';
 import '../rxjs-operators';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-movie-detail',
@@ -21,10 +22,7 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       const id = params['id'];
-      this.movieService.getMovie(id).then(data => {
-        this.model = data;
-        console.log(JSON.stringify(data));
-      });
+      this.movieService.getMovie(id).subscribe(movie => (this.model = movie));
     });
   }
 }
